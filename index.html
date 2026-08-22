@@ -1,233 +1,333 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hello, World — My First Project</title>
-<style>
-  :root {
-    --paper: #FBF8F3;
-    --line: #DDD5C7;
-    --ink: #26241F;
-    --ink-soft: #6B6558;
-    --accent: #C4622D;
-    --accent-soft: #EFDFCF;
-  }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arshad Mehmood | Portfolio</title>
+    <style>
+        /* Modern CSS Reset & Core Variables */
+        :root {
+            --bg-dark: #0f172a;       /* Slate 900 */
+            --bg-card: #1e293b;       /* Slate 800 */
+            --text-main: #f8fafc;     /* Slate 50 */
+            --text-muted: #94a3b8;    /* Slate 400 */
+            --accent: #38bdf8;        /* Sky 400 (Professional Tech Cyan) */
+            --accent-glow: rgba(56, 189, 248, 0.15);
+            --font-stack: 'Inter', system-ui, -apple-system, sans-serif;
+        }
 
-  * { box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  body {
-    margin: 0;
-    background: var(--paper);
-    color: var(--ink);
-    font-family: 'Courier New', Courier, monospace;
-    line-height: 1.6;
-  }
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: var(--font-stack);
+            line-height: 1.6;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-  /* faint notebook rule-lines down the page */
-  body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background-image: repeating-linear-gradient(
-      to bottom,
-      transparent 0,
-      transparent 38px,
-      var(--line) 39px
-    );
-    opacity: 0.5;
-    pointer-events: none;
-    z-index: 0;
-  }
+        /* Container Layout */
+        .portfolio-card {
+            background-color: var(--bg-card);
+            max-width: 650px;
+            width: 100%;
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
 
-  header, main, footer {
-    position: relative;
-    z-index: 1;
-  }
+        /* Decorative Background Radial Glow */
+        .portfolio-card::before {
+            content: '';
+            position: absolute;
+            top: -150px;
+            right: -150px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+            pointer-events: none;
+        }
 
-  .wrap {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 0 28px;
-  }
+        /* Header Styles */
+        header {
+            margin-bottom: 2.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 1.5rem;
+        }
 
-  header {
-    padding: 90px 0 40px;
-    border-bottom: 2px solid var(--ink);
-  }
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: rgba(56, 189, 248, 0.1);
+            color: var(--accent);
+            padding: 0.35rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+        }
 
-  .eyebrow {
-    display: inline-block;
-    font-size: 13px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--accent);
-    background: var(--accent-soft);
-    padding: 4px 10px;
-    border-radius: 4px;
-    margin-bottom: 18px;
-  }
+        .status-dot {
+            width: 6px;
+            height: 6px;
+            background-color: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--accent);
+            animation: pulse 2s infinite;
+        }
 
-  h1 {
-    font-family: Georgia, 'Times New Roman', serif;
-    font-size: clamp(2.2rem, 6vw, 3.2rem);
-    line-height: 1.15;
-    margin: 0 0 18px;
-  }
+        h1 {
+            font-size: 2.25rem;
+            font-weight: 800;
+            letter-spacing: -0.025em;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, #ffffff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-  .cursor {
-    display: inline-block;
-    width: 0.5em;
-    background: var(--accent);
-    margin-left: 4px;
-    animation: blink 1s steps(1) infinite;
-  }
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
 
-  @keyframes blink {
-    50% { opacity: 0; }
-  }
+        /* Sections Shared Styles */
+        section {
+            margin-bottom: 2.5rem;
+        }
 
-  .subhead {
-    font-size: 1.05rem;
-    color: var(--ink-soft);
-    max-width: 50ch;
-  }
+        section h3 {
+            font-size: 1.1rem;
+            color: var(--text-main);
+            margin-bottom: 1rem;
+            font-weight: 600;
+            border-left: 3px solid var(--accent);
+            padding-left: 0.5rem;
+        }
 
-  main {
-    padding: 48px 0 20px;
-  }
+        /* Timeline / Steps Roadmap Layout */
+        .roadmap {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
 
-  .entry {
-    display: grid;
-    grid-template-columns: 84px 1fr;
-    gap: 4px 20px;
-    padding: 22px 0;
-    border-bottom: 1px dashed var(--line);
-  }
+        .step-card {
+            background: rgba(15, 23, 42, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.02);
+            padding: 1.25rem;
+            border-radius: 12px;
+            display: flex;
+            gap: 1rem;
+            transition: all 0.3s ease;
+        }
 
-  .entry:last-child { border-bottom: none; }
+        .step-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(56, 189, 248, 0.3);
+            background: rgba(15, 23, 42, 0.6);
+        }
 
-  .entry time {
-    font-size: 12px;
-    color: var(--ink-soft);
-    padding-top: 3px;
-  }
+        .step-num {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--accent);
+            background: rgba(56, 189, 248, 0.1);
+            height: 28px;
+            width: 28px;
+            min-width: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+        }
 
-  .entry h2 {
-    font-family: Georgia, serif;
-    font-size: 1.15rem;
-    margin: 0 0 6px;
-  }
+        .step-content h2 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
 
-  .entry p {
-    margin: 0;
-    color: var(--ink-soft);
-    font-size: 0.95rem;
-  }
+        .step-content p {
+            color: var(--text-muted);
+            font-size: 0.925rem;
+        }
 
-  .signature {
-    margin-top: 46px;
-    padding: 26px 24px;
-    background: var(--ink);
-    color: var(--paper);
-    border-radius: 6px;
-  }
+        /* NEW: CSS Grid Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* Creates 2 equal columns */
+            gap: 1rem;                             /* Uniform spacing between cards */
+        }
 
-  .signature .prompt {
-    color: #8FBF8F;
-    font-size: 0.9rem;
-  }
+        .skill-item {
+            background: rgba(15, 23, 42, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 1rem;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            transition: all 0.2s ease;
+        }
 
-  .signature p {
-    margin: 8px 0 0;
-    font-size: 0.95rem;
-    color: #D8D3C6;
-  }
+        .skill-item:hover {
+            border-color: var(--accent);
+            background: rgba(56, 189, 248, 0.05);
+            transform: scale(1.02);
+        }
 
-  footer {
-    padding: 40px 0 80px;
-    text-align: center;
-    color: var(--ink-soft);
-    font-size: 13px;
-  }
+        .skill-icon {
+            font-size: 1.5rem;
+        }
 
-  a {
-    color: var(--accent);
-  }
+        .skill-info font {
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: block;
+        }
 
-  @media (max-width: 500px) {
-    .entry {
-      grid-template-columns: 1fr;
-      gap: 2px;
-    }
-  }
+        .skill-info span {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
 
-  @media (prefers-reduced-motion: reduce) {
-    .cursor { animation: none; }
-  }
-</style>
+        /* Social Links Buttons Section */
+        .social-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: #334155;
+            color: var(--text-main);
+            text-decoration: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .btn:hover {
+            background-color: var(--accent);
+            color: #0f172a;
+            transform: translateY(-1px);
+        }
+
+        /* Terminal Console Block */
+        .terminal-block {
+            background-color: #090d16;
+            border-radius: 8px;
+            padding: 1rem 1.25rem;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.85rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .terminal-header {
+            color: #475569;
+            margin-bottom: 0.5rem;
+            user-select: none;
+            display: flex;
+            gap: 0.35rem;
+        }
+        
+        .terminal-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #334155;
+        }
+
+        .command {
+            color: #38bdf8;
+        }
+
+        .output {
+            color: #34d399; 
+            margin-top: 0.25rem;
+        }
+
+        /* Animations */
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.4; }
+        }
+
+        @media (max-width: 500px) {
+            .portfolio-card { padding: 1.5rem; }
+            h1 { font-size: 1.75rem; }
+            .skills-grid { grid-template-columns: 1fr; } /* Stacks to 1 column on mobile */
+            .social-buttons { flex-direction: column; }
+        }
+    </style>
 </head>
 <body>
 
-  <header>
-    <div class="wrap">
-      <span class="eyebrow">first commit</span>
-      <h1>Hello, World<span class="cursor">&nbsp;</span></h1>
-      <p class="subhead">I'm Arshad Mehmood, and this is where my coding journey starts. One page, one repo, one small step at a time.</p>
-    </div>
-  </header>
+    <div class="portfolio-card">
+        <header>
+            <div class="status-badge">
+                <div class="status-dot"></div>
+                First Commit Live
+            </div>
+            <h1>Arshad Mehmood</h1>
+            <p class="subtitle">I'm Arshad Mehmood, and this is where my coding journey starts. One page, one repo, one small step at a time.</p>
+        </header>
 
-  <main>
-    <div class="wrap">
+        <!-- Section 1: Roadmap -->
+        <section>
+            <h3>My Roadmap</h3>
+            <div class="roadmap">
+                <div class="step-card">
+                    <div class="step-num">01</div>
+                    <div class="step-content">
+                        <h2>Learn the Foundations</h2>
+                        <p>Mastering modern HTML5 structure and clean CSS3 style layouts to construct seamless responsive interfaces.</p>
+                    </div>
+                </div>
 
-      <div class="entry">
-        <time>Step 01</time>
-        <div>
-          <h2>Learn the basics</h2>
-          <p>Starting with HTML and CSS to understand how pages are structured and styled.</p>
-        </div>
-      </div>
+                <div class="step-card">
+                    <div class="step-num">02</div>
+                    <div class="step-content">
+                        <h2>Build Interactive Projects</h2>
+                        <p>Applying knowledge dynamically by designing real-world interactive pages, keeping assets lightweight and clean.</p>
+                    </div>
+                </div>
 
-      <div class="entry">
-        <time>Step 02</time>
-        <div>
-          <h2>Build small things</h2>
-          <p>Practicing by making tiny, real projects instead of just reading tutorials.</p>
-        </div>
-      </div>
+                <div class="step-card">
+                    <div class="step-num">03</div>
+                    <div class="step-content">
+                        <h2>Deploy to Global Cloud</h2>
+                        <p>Committing production code cleanly to GitHub to scale workflows, track milestones, and manage builds flawlessly.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-      <div class="entry">
-        <time>Step 03</time>
-        <div>
-          <h2>Push to GitHub</h2>
-          <p>Saving my work in version control so I can track progress and share it.</p>
-        </div>
-      </div>
-
-      <div class="signature">
-        <div class="prompt">$ git log --oneline</div>
-        <p>a1b2c3d — my very first commit</p>
-      </div>
-
-      <div class="entry" style="margin-top: 10px; border-bottom: none;">
-        <time>Connect</time>
-        <div>
-          <h2>Connect With Me</h2>
-          <p>
-            Email: <a href="mailto:janjuaconsultants@gmail.com">janjuaconsultants@gmail.com</a><br>
-            Site: <a href="https://arshad-tech384.github.io/my-first-project/">arshad-tech384.github.io/my-first-project</a>
-          </p>
-        </div>
-      </div>
-
-    </div>
-  </main>
-
-  <footer>
-    <div class="wrap">
-      Made by Arshad Mehmood while learning to code · my-first-project
-    </div>
-  </footer>
-
-</body>
-</html>
+        <!-- NEW Section 2: Core Skills Grid -->
+        <section>
+            <h3>Core Skills</h3>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <span class="skill-icon">🧡</span>
+                    <div class="skill-info">
