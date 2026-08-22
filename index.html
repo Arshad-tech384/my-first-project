@@ -5,23 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Arshad Mehmood | Portfolio</title>
     <style>
-        /* Modern CSS Reset & Core Variables */
         :root {
-            --bg-dark: #0f172a;       /* Slate 900 */
-            --bg-card: #1e293b;       /* Slate 800 */
-            --text-main: #f8fafc;     /* Slate 50 */
-            --text-muted: #94a3b8;    /* Slate 400 */
-            --accent: #38bdf8;        /* Sky 400 (Professional Tech Cyan) */
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #38bdf8;
             --accent-glow: rgba(56, 189, 248, 0.15);
             --font-stack: 'Inter', system-ui, -apple-system, sans-serif;
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             background-color: var(--bg-dark);
             color: var(--text-main);
@@ -33,301 +26,79 @@
             justify-content: center;
             align-items: center;
         }
-
-        /* Container Layout */
         .portfolio-card {
             background-color: var(--bg-card);
             max-width: 650px;
             width: 100%;
             border-radius: 16px;
             padding: 2.5rem;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
             border: 1px solid rgba(255, 255, 255, 0.05);
             position: relative;
             overflow: hidden;
         }
-
-        /* Decorative Background Radial Glow */
-        .portfolio-card::before {
-            content: '';
-            position: absolute;
-            top: -150px;
-            right: -150px;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        /* Header Styles */
-        header {
-            margin-bottom: 2.5rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding-bottom: 1.5rem;
-        }
-
-        .status-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background-color: rgba(56, 189, 248, 0.1);
-            color: var(--accent);
-            padding: 0.35rem 0.75rem;
-            border-radius: 9999px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 1rem;
-        }
-
-        .status-dot {
-            width: 6px;
-            height: 6px;
-            background-color: var(--accent);
-            border-radius: 50%;
-            box-shadow: 0 0 8px var(--accent);
-            animation: pulse 2s infinite;
-        }
-
-        h1 {
-            font-size: 2.25rem;
-            font-weight: 800;
-            letter-spacing: -0.025em;
-            margin-bottom: 0.5rem;
-            background: linear-gradient(to right, #ffffff, #94a3b8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .subtitle {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-        }
-
-        /* Sections Shared Styles */
-        section {
-            margin-bottom: 2.5rem;
-        }
-
-        section h3 {
-            font-size: 1.1rem;
-            color: var(--text-main);
-            margin-bottom: 1rem;
-            font-weight: 600;
-            border-left: 3px solid var(--accent);
-            padding-left: 0.5rem;
-        }
-
-        /* Timeline / Steps Roadmap Layout */
-        .roadmap {
-            display: flex;
-            flex-direction: column;
-            gap: 1.25rem;
-        }
-
-        .step-card {
-            background: rgba(15, 23, 42, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.02);
-            padding: 1.25rem;
-            border-radius: 12px;
-            display: flex;
-            gap: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .step-card:hover {
-            transform: translateY(-2px);
-            border-color: rgba(56, 189, 248, 0.3);
-            background: rgba(15, 23, 42, 0.6);
-        }
-
-        .step-num {
-            font-size: 0.85rem;
-            font-weight: 700;
-            color: var(--accent);
-            background: rgba(56, 189, 248, 0.1);
-            height: 28px;
-            width: 28px;
-            min-width: 28px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 6px;
-        }
-
-        .step-content h2 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 0.25rem;
-        }
-
-        .step-content p {
-            color: var(--text-muted);
-            font-size: 0.925rem;
-        }
-
-        /* NEW: CSS Grid Skills Section */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr); /* Creates 2 equal columns */
-            gap: 1rem;                             /* Uniform spacing between cards */
-        }
-
-        .skill-item {
-            background: rgba(15, 23, 42, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 1rem;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            transition: all 0.2s ease;
-        }
-
-        .skill-item:hover {
-            border-color: var(--accent);
-            background: rgba(56, 189, 248, 0.05);
-            transform: scale(1.02);
-        }
-
-        .skill-icon {
-            font-size: 1.5rem;
-        }
-
-        .skill-info font {
-            font-weight: 600;
-            font-size: 0.95rem;
-            display: block;
-        }
-
-        .skill-info span {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-        }
-
-        /* Social Links Buttons Section */
-        .social-buttons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background-color: #334155;
-            color: var(--text-main);
-            text-decoration: none;
-            padding: 0.6rem 1.2rem;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: all 0.2s ease;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .btn:hover {
-            background-color: var(--accent);
-            color: #0f172a;
-            transform: translateY(-1px);
-        }
-
-        /* Terminal Console Block */
-        .terminal-block {
-            background-color: #090d16;
-            border-radius: 8px;
-            padding: 1rem 1.25rem;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 0.85rem;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .terminal-header {
-            color: #475569;
-            margin-bottom: 0.5rem;
-            user-select: none;
-            display: flex;
-            gap: 0.35rem;
-        }
-        
-        .terminal-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background-color: #334155;
-        }
-
-        .command {
-            color: #38bdf8;
-        }
-
-        .output {
-            color: #34d399; 
-            margin-top: 0.25rem;
-        }
-
-        /* Animations */
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.4; }
-        }
-
-        @media (max-width: 500px) {
-            .portfolio-card { padding: 1.5rem; }
-            h1 { font-size: 1.75rem; }
-            .skills-grid { grid-template-columns: 1fr; } /* Stacks to 1 column on mobile */
-            .social-buttons { flex-direction: column; }
-        }
+        header { margin-bottom: 2.5rem; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 1.5rem; }
+        .status-badge { display: inline-flex; align-items: center; gap: 0.5rem; background-color: rgba(56, 189, 248, 0.1); color: var(--accent); padding: 0.35rem 0.75rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; margin-bottom: 1rem; }
+        .status-dot { width: 6px; height: 6px; background-color: var(--accent); border-radius: 50%; animation: pulse 2s infinite; }
+        h1 { font-size: 2.25rem; font-weight: 800; margin-bottom: 0.5rem; background: linear-gradient(to right, #ffffff, #94a3b8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        section { margin-bottom: 2.5rem; }
+        section h3 { font-size: 1.1rem; margin-bottom: 1rem; border-left: 3px solid var(--accent); padding-left: 0.5rem; }
+        .roadmap { display: flex; flex-direction: column; gap: 1.25rem; }
+        .step-card { background: rgba(15, 23, 42, 0.4); padding: 1.25rem; border-radius: 12px; display: flex; gap: 1rem; transition: all 0.3s ease; border: 1px solid rgba(255, 255, 255, 0.02); }
+        .step-card:hover { transform: translateY(-2px); border-color: rgba(56, 189, 248, 0.3); }
+        .step-num { color: var(--accent); background: rgba(56, 189, 248, 0.1); height: 28px; width: 28px; display: flex; align-items: center; justify-content: center; border-radius: 6px; font-weight: 700; font-size: 0.85rem; }
+        .skills-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+        .skill-item { background: rgba(15, 23, 42, 0.3); border: 1px solid rgba(255, 255, 255, 0.05); padding: 1rem; border-radius: 10px; display: flex; align-items: center; gap: 0.75rem; transition: all 0.2s ease; }
+        .skill-item:hover { border-color: var(--accent); transform: scale(1.02); }
+        .social-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+        .btn { background-color: #334155; color: var(--text-main); text-decoration: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-size: 0.9rem; transition: all 0.2s ease; }
+        .btn:hover { background-color: var(--accent); color: #0f172a; }
+        .terminal-block { background-color: #090d16; border-radius: 8px; padding: 1rem; font-family: monospace; font-size: 0.85rem; border: 1px solid rgba(255, 255, 255, 0.05); }
+        @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+        @media (max-width: 500px) { .skills-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
-
     <div class="portfolio-card">
         <header>
-            <div class="status-badge">
-                <div class="status-dot"></div>
-                First Commit Live
-            </div>
+            <div class="status-badge"><div class="status-dot"></div>First Commit Live</div>
             <h1>Arshad Mehmood</h1>
-            <p class="subtitle">I'm Arshad Mehmood, and this is where my coding journey starts. One page, one repo, one small step at a time.</p>
+            <p>Welcome to my development space. One page, one repo, one small step at a time.</p>
         </header>
 
-        <!-- Section 1: Roadmap -->
         <section>
             <h3>My Roadmap</h3>
             <div class="roadmap">
-                <div class="step-card">
-                    <div class="step-num">01</div>
-                    <div class="step-content">
-                        <h2>Learn the Foundations</h2>
-                        <p>Mastering modern HTML5 structure and clean CSS3 style layouts to construct seamless responsive interfaces.</p>
-                    </div>
-                </div>
-
-                <div class="step-card">
-                    <div class="step-num">02</div>
-                    <div class="step-content">
-                        <h2>Build Interactive Projects</h2>
-                        <p>Applying knowledge dynamically by designing real-world interactive pages, keeping assets lightweight and clean.</p>
-                    </div>
-                </div>
-
-                <div class="step-card">
-                    <div class="step-num">03</div>
-                    <div class="step-content">
-                        <h2>Deploy to Global Cloud</h2>
-                        <p>Committing production code cleanly to GitHub to scale workflows, track milestones, and manage builds flawlessly.</p>
-                    </div>
-                </div>
+                <div class="step-card"><div class="step-num">01</div><div class="step-content"><h2>Foundations</h2><p>Learning HTML5 and CSS3.</p></div></div>
+                <div class="step-card"><div class="step-num">02</div><div class="step-content"><h2>Projects</h2><p>Building interactive pages.</p></div></div>
+                <div class="step-card"><div class="step-num">03</div><div class="step-content"><h2>Deployment</h2><p>Mastering Git and GitHub.</p></div></div>
             </div>
         </section>
 
-        <!-- NEW Section 2: Core Skills Grid -->
         <section>
             <h3>Core Skills</h3>
             <div class="skills-grid">
-                <div class="skill-item">
-                    <span class="skill-icon">🧡</span>
-                    <div class="skill-info">
+                <div class="skill-item"><span>🧡</span><div><strong>HTML5</strong><br><small>Structure</small></div></div>
+                <div class="skill-item"><span>💙</span><div><strong>CSS3</strong><br><small>Styling</small></div></div>
+                <div class="skill-item"><span>💛</span><div><strong>JavaScript</strong><br><small>Logic</small></div></div>
+                <div class="skill-item"><span>🖤</span><div><strong>Git</strong><br><small>Version Control</small></div></div>
+            </div>
+        </section>
+
+        <section>
+            <h3>Connect With Me</h3>
+            <div class="social-buttons">
+                <a href="mailto:janjuaconsultants@gmail.com" class="btn">✉️ Email Me</a>
+                <a href="https://github.com" target="_blank" class="btn">🛠️ GitHub</a>
+            </div>
+        </section>
+
+        <footer>
+            <div class="terminal-block">
+                <div><span style="color:var(--accent)">arshad$</span> git log --oneline</div>
+                <div style="color:#34d399">● v1.2.0 - Core Skills Grid deployed!</div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
