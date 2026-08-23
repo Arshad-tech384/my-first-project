@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,20 +7,16 @@
     <style>
         /* Modern CSS Reset & Core Variables */
         :root {
-            --bg-dark: #0f172a;       /* Slate 900 */
-            --bg-card: #1e293b;       /* Slate 800 */
-            --text-main: #f8fafc;     /* Slate 50 */
-            --text-muted: #94a3b8;    /* Slate 400 */
-            --accent: #38bdf8;        /* Sky 400 (Professional Tech Cyan) */
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #38bdf8;
             --accent-glow: rgba(56, 189, 248, 0.15);
             --font-stack: 'Inter', system-ui, -apple-system, sans-serif;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             background-color: var(--bg-dark);
@@ -34,324 +30,129 @@
             align-items: center;
         }
 
-        /* Container Layout */
         .portfolio-card {
             background-color: var(--bg-card);
             max-width: 650px;
             width: 100%;
             border-radius: 16px;
             padding: 2.5rem;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
             border: 1px solid rgba(255, 255, 255, 0.05);
             position: relative;
             overflow: hidden;
         }
 
-        /* Decorative Background Radial Glow */
-        .portfolio-card::before {
-            content: '';
-            position: absolute;
-            top: -150px;
-            right: -150px;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        /* Header Styles */
         header {
             margin-bottom: 2.5rem;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             padding-bottom: 1.5rem;
         }
 
-        .status-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background-color: rgba(56, 189, 248, 0.1);
+        /* LIVE GREETING STYLE */
+        #greeting-text {
             color: var(--accent);
-            padding: 0.35rem 0.75rem;
-            border-radius: 9999px;
-            font-size: 0.75rem;
             font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 1rem;
-        }
-
-        .status-dot {
-            width: 6px;
-            height: 6px;
-            background-color: var(--accent);
-            border-radius: 50%;
-            box-shadow: 0 0 8px var(--accent);
-            animation: pulse 2s infinite;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+            display: block;
         }
 
         h1 {
             font-size: 2.25rem;
             font-weight: 800;
-            letter-spacing: -0.025em;
             margin-bottom: 0.5rem;
             background: linear-gradient(to right, #ffffff, #94a3b8);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .subtitle {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-        }
+        section { margin-bottom: 2.5rem; }
+        section h3 { font-size: 1.1rem; margin-bottom: 1rem; border-left: 3px solid var(--accent); padding-left: 0.5rem; }
 
-        /* Sections Shared Styles */
-        section {
-            margin-bottom: 2.5rem;
-        }
+        .skills-grid, .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+        .skill-item, .project-card { background: rgba(15, 23, 42, 0.3); border: 1px solid rgba(255, 255, 255, 0.05); padding: 1.25rem; border-radius: 12px; transition: all 0.3s ease; }
+        .skill-item:hover, .project-card:hover { border-color: var(--accent); transform: translateY(-3px); }
 
-        section h3 {
-            font-size: 1.1rem;
-            color: var(--text-main);
-            margin-bottom: 1rem;
-            font-weight: 600;
-            border-left: 3px solid var(--accent);
-            padding-left: 0.5rem;
-        }
+        .social-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+        .btn { background-color: #334155; color: var(--text-main); text-decoration: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-size: 0.9rem; transition: all 0.2s ease; }
+        .btn:hover { background-color: var(--accent); color: #0f172a; }
 
-        /* Timeline / Steps Roadmap Layout */
-        .roadmap {
-            display: flex;
-            flex-direction: column;
-            gap: 1.25rem;
-        }
+        .terminal-block { background-color: #090d16; border-radius: 8px; padding: 1rem; font-family: monospace; font-size: 0.85rem; border: 1px solid rgba(255, 255, 255, 0.05); }
 
-        .step-card {
-            background: rgba(15, 23, 42, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.02);
-            padding: 1.25rem;
-            border-radius: 12px;
-            display: flex;
-            gap: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .step-card:hover {
-            transform: translateY(-2px);
-            border-color: rgba(56, 189, 248, 0.3);
-            background: rgba(15, 23, 42, 0.6);
-        }
-
-        .step-num {
-            font-size: 0.85rem;
-            font-weight: 700;
-            color: var(--accent);
-            background: rgba(56, 189, 248, 0.1);
-            height: 28px;
-            width: 28px;
-            min-width: 28px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 6px;
-        }
-
-        .step-content h2 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 0.25rem;
-        }
-
-        .step-content p {
-            color: var(--text-muted);
-            font-size: 0.925rem;
-        }
-
-        /* CSS Grid Skills Section */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-        }
-
-        .skill-item {
-            background: rgba(15, 23, 42, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 1rem;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            transition: all 0.2s ease;
-        }
-
-        .skill-item:hover {
-            border-color: var(--accent);
-            background: rgba(56, 189, 248, 0.05);
-            transform: scale(1.02);
-        }
-
-        .skill-icon {
-            font-size: 1.5rem;
-        }
-
-        .skill-info font {
-            font-weight: 600;
-            font-size: 0.95rem;
-            display: block;
-        }
-
-        .skill-info span {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-        }
-
-        /* NEW: Projects Section Grid Layout */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.25rem;
-        }
-
-        .project-card {
-            background: rgba(15, 23, 42, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            padding: 1.25rem;
-            border-radius: 12px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: all 0.3s ease;
-        }
-
-        .project-card:hover {
-            border-color: var(--accent);
-            background: rgba(15, 23, 42, 0.5);
-            transform: translateY(-3px);
-        }
-
-        .project-card h4 {
-            font-size: 1.05rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: var(--text-main);
-        }
-
-        .project-card p {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-bottom: 1.25rem;
-            flex-grow: 1;
-        }
-
-        .project-link {
-            font-size: 0.8rem;
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.25rem;
-            transition: opacity 0.2s ease;
-        }
-
-        .project-link:hover {
-            text-decoration: underline;
-            opacity: 0.8;
-        }
-
-        /* Social Links Buttons Section */
-        .social-buttons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background-color: #334155;
-            color: var(--text-main);
-            text-decoration: none;
-            padding: 0.6rem 1.2rem;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: all 0.2s ease;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .btn:hover {
-            background-color: var(--accent);
-            color: #0f172a;
-            transform: translateY(-1px);
-        }
-
-        /* Terminal Console Block */
-        .terminal-block {
-            background-color: #090d16;
-            border-radius: 8px;
-            padding: 1rem 1.25rem;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 0.85rem;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .terminal-header {
-            color: #475569;
-            margin-bottom: 0.5rem;
-            user-select: none;
-            display: flex;
-            gap: 0.35rem;
-        }
-        
-        .terminal-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background-color: #334155;
-        }
-
-        .command {
-            color: #38bdf8;
-        }
-
-        .output {
-            color: #34d399; 
-            margin-top: 0.25rem;
-        }
-
-        /* Animations */
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.4; }
-        }
-
-        @media (max-width: 500px) {
-            .portfolio-card { padding: 1.5rem; }
-            h1 { font-size: 1.75rem; }
-            .skills-grid, .projects-grid { grid-template-columns: 1fr; }
-            .social-buttons { flex-direction: column; }
-        }
+        @media (max-width: 500px) { .skills-grid, .projects-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
 
     <div class="portfolio-card">
         <header>
-            <div class="status-badge">
-                <div class="status-dot"></div>
-                First Commit Live
-            </div>
+            <!-- THIS IS THE LIVE GREETING AREA -->
+            <span id="greeting-text">Loading...</span>
             <h1>Arshad Mehmood</h1>
-            <p class="subtitle">I'm Arshad Mehmood, and this is where my coding journey starts. One page, one repo, one small step at a time.</p>
+            <p>Welcome to my development space. One page, one repo, one small step at a time.</p>
         </header>
 
-        <!-- Section 1: Roadmap -->
         <section>
-            <h3>My Roadmap</h3>
-            <div class="roadmap">
-                <div class="step-card">
-                    <div class="step-num">01</div>
-                    <div class="step-content">
+            <h3>Core Skills</h3>
+            <div class="skills-grid">
+                <div class="skill-item"><span>🧡</span><strong>HTML5</strong></div>
+                <div class="skill-item"><span>💙</span><strong>CSS3</strong></div>
+                <div class="skill-item"><span>💛</span><strong>JavaScript</strong></div>
+                <div class="skill-item"><span>🖤</span><strong>Git</strong></div>
+            </div>
+        </section>
+
+        <section>
+            <h3>Featured Projects</h3>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h4>📁 Personal Portfolio</h4>
+                    <a href="https://github.io" target="_blank" style="color:var(--accent); text-decoration:none; font-size:0.8rem;">🔗 View Live</a>
+                </div>
+                <div class="project-card">
+                    <h4>🧮 Calculator App</h4>
+                    <span style="font-size:0.8rem; color:var(--text-muted);">⏳ Coming Soon</span>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h3>Connect With Me</h3>
+            <div class="social-buttons">
+                <a href="mailto:janjuaconsultants@gmail.com" class="btn">✉️ Email Me</a>
+                <a href="https://github.com" target="_blank" class="btn">🛠️ GitHub</a>
+            </div>
+        </section>
+
+        <footer>
+            <div class="terminal-block">
+                <div style="color:var(--accent)">arshad$ git log --oneline</div>
+                <div style="color:#34d399">● v1.4.0 - JavaScript Greeting active!</div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC FOR DYNAMIC GREETING -->
+    <script>
+        function updateGreeting() {
+            const greetingElement = document.getElementById('greeting-text');
+            const currentHour = new Date().getHours(); // Gets current hour (0-23)
+            let greetingMsg;
+
+            if (currentHour < 12) {
+                greetingMsg = "☀️ Good Morning";
+            } else if (currentHour < 18) {
+                greetingMsg = "🌤️ Good Afternoon";
+            } else {
+                greetingMsg = "🌙 Good Evening";
+            }
+
+            greetingElement.textContent = greetingMsg;
+        }
+
+        // Run the function when the page loads
+        updateGreeting();
+    </script>
+
+</body>
+</html>
