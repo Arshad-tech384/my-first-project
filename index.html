@@ -1,125 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arshad Mehmood | AI & Cybersecurity Portfolio</title>
-    <style>
-        :root {
-            --bg-dark: #0f172a;
-            --bg-card: #1e293b;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --accent: #38bdf8;
-            --accent-glow: rgba(56, 189, 248, 0.15);
-            --font-stack: 'Inter', system-ui, -apple-system, sans-serif;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            background-color: var(--bg-dark);
-            color: var(--text-main);
-            font-family: var(--font-stack);
-            line-height: 1.6;
-            padding: 2rem 1rem;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        .portfolio-card {
-            background-color: var(--bg-card);
-            max-width: 700px;
-            width: 100%;
-            border-radius: 16px;
-            padding: 2.5rem;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            position: relative;
-        }
-        header { margin-bottom: 2rem; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 1.5rem; }
-        #greeting-text { color: var(--accent); font-weight: 600; font-size: 0.9rem; display: block; margin-bottom: 0.5rem; }
-        h1 { font-size: 2.25rem; font-weight: 800; margin-bottom: 0.5rem; background: linear-gradient(to right, #ffffff, #94a3b8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .bio { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; }
+<!-- Add this new section below your Skills Grid in index.html -->
+<section>
+    <h3>Certifications</h3>
+    <div class="skills-grid">
+        <!-- Verified DigiSkills Certificate -->
+        <div class="skill-card">
+            <span class="skill-icon">🎓</span>
+            <div class="skill-info">
+                <strong>DigiSkills.pk</strong><br>
+                <small>E-Certificate Earned</small>
+            </div>
+        </div>
         
-        section { margin-bottom: 2rem; }
-        section h3 { font-size: 1.1rem; margin-bottom: 1rem; border-left: 3px solid var(--accent); padding-left: 0.5rem; }
-
-        /* SKILLS GRID STYLES */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); /* Responsive columns */
-            gap: 1rem;
-        }
-        .skill-card {
-            background: rgba(15, 23, 42, 0.3);
-            padding: 1rem;
-            border-radius: 12px;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.3s ease;
-        }
-        .skill-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent);
-            background: rgba(56, 189, 248, 0.05);
-        }
-        .skill-icon { font-size: 1.5rem; display: block; margin-bottom: 0.5rem; }
-        .skill-name { font-weight: 600; font-size: 0.9rem; }
-
-        .social-buttons { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; }
-        .btn { display: inline-flex; align-items: center; gap: 0.5rem; background-color: #334155; color: var(--text-main); text-decoration: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-size: 0.9rem; transition: all 0.2s ease; }
-        .btn:hover { background-color: var(--accent); color: #0f172a; }
-
-        footer { margin-top: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 1.5rem; }
-        .terminal-block { background-color: #090d16; border-radius: 8px; padding: 1rem; font-family: monospace; font-size: 0.8rem; border: 1px solid rgba(255, 255, 255, 0.05); }
-    </style>
-</head>
-<body>
-    <div class="portfolio-card">
-        <header>
-            <span id="greeting-text">Loading...</span>
-            <h1>Arshad Mehmood</h1>
-            <p class="bio">I'm a student specializing in <strong>Artificial Intelligence</strong> and <strong>Cybersecurity</strong>. I focus on leveraging AI for advanced threat detection and ethical hacking to architect secure, intelligent solutions.</p>
-        </header>
-
-        <!-- SKILLS SECTION -->
-        <section>
-            <h3>Core Technical Skills</h3>
-            <div class="skills-grid">
-                <div class="skill-card"><span class="skill-icon">🐍</span><span class="skill-name">Python</span></div>
-                <div class="skill-card"><span class="skill-icon">🛡️</span><span class="skill-name">Cybersecurity</span></div>
-                <div class="skill-card"><span class="skill-icon">🤖</span><span class="skill-name">AI Agents</span></div>
-                <div class="skill-card"><span class="skill-icon">🌐</span><span class="skill-name">Web Dev</span></div>
-                <div class="skill-card"><span class="skill-icon">🏗️</span><span class="skill-name">System Design</span></div>
-                <div class="skill-card"><span class="skill-icon">🛠️</span><span class="skill-name">Git & GitHub</span></div>
+        <!-- Placeholder for PACI (In Progress) -->
+        <div class="skill-card" style="opacity: 0.7;">
+            <span class="skill-icon">🔒</span>
+            <div class="skill-info">
+                <strong>PACI Punjab</strong><br>
+                <small>Specialization In Progress</small>
             </div>
-        </section>
-
-        <section>
-            <h3>Connect With Me</h3>
-            <div class="social-buttons">
-                <a href="mailto:janjuaconsultants@gmail.com" class="btn">✉️ Email Me</a>
-                <a href="https://github.com" target="_blank" class="btn">🛠️ GitHub</a>
-                <a href="https://linkedin.com" target="_blank" class="btn">💼 LinkedIn</a>
-            </div>
-        </section>
-
-        <footer>
-            <div class="terminal-block">
-                <div style="color:var(--accent)">arshad$ git log --oneline</div>
-                <div style="color:#34d399">● v1.6.0 - Responsive CSS Grid Skills active!</div>
-            </div>
-        </footer>
+        </div>
     </div>
+</section>
 
-    <script>
-        function updateGreeting() {
-            const greetingElement = document.getElementById('greeting-text');
-            const hour = new Date().getHours();
-            let msg = hour < 12 ? "☀️ Good Morning" : hour < 18 ? "🌤️ Good Afternoon" : "🌙 Good Evening";
-            greetingElement.textContent = msg;
-        }
-        updateGreeting();
-    </script>
-</body>
-</html>
+<!-- Update your terminal block to reflect the new version -->
+<footer>
+    <div class="terminal-block">
+        <div style="color:var(--accent)">arshad$ git log --oneline</div>
+        <div style="color:#34d399">● v1.7.0 - DigiSkills E-Certificate verified!</div>
+    </div>
+</footer>
