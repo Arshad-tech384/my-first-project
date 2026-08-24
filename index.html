@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arshad Mehmood | Portfolio & Dashboard</title>
+    <title>Arshad Mehmood | Portfolio</title>
     <style>
         :root {
             --bg-dark: #0f172a;
@@ -13,8 +13,6 @@
             --accent: #38bdf8;
             --accent-glow: rgba(56, 189, 248, 0.15);
             --font-stack: 'Inter', system-ui, -apple-system, sans-serif;
-            
-            /* Tracker colors */
             --danger: #ef4444;
             --warning: #f59e0b;
             --success: #10b981;
@@ -39,8 +37,6 @@
             padding: 2.5rem;
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
             border: 1px solid rgba(255, 255, 255, 0.05);
-            position: relative;
-            overflow: hidden;
         }
         header { margin-bottom: 2rem; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 1.5rem; }
         #greeting-text { color: var(--accent); font-weight: 600; font-size: 0.9rem; display: block; margin-bottom: 0.5rem; }
@@ -48,107 +44,27 @@
         .bio { color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; }
         section { margin-bottom: 2.5rem; }
         section h3 { font-size: 1.1rem; margin-bottom: 1rem; border-left: 3px solid var(--accent); padding-left: 0.5rem; color: var(--text-main); }
-        
-        /* RESPONSIVE GRID FOR SKILLS & CERTS */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 1rem;
-        }
-        .skill-card {
-            background: rgba(15, 23, 42, 0.3);
-            padding: 1rem;
-            border-radius: 12px;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.3s ease;
-        }
-        .skill-card:hover {
-            transform: translateY(-3px);
-            border-color: var(--accent);
-            background: rgba(56, 189, 248, 0.05);
-        }
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; }
+        .skill-card { background: rgba(15, 23, 42, 0.3); padding: 1rem; border-radius: 12px; text-align: center; border: 1px solid rgba(255, 255, 255, 0.05); }
         .skill-icon { font-size: 1.5rem; display: block; margin-bottom: 0.5rem; }
         .skill-name { font-weight: 600; font-size: 0.9rem; display: block; }
-
-        /* TRACKER SPECIFIC STYLES */
-        .tracker-box {
-            background: rgba(15, 23, 42, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            padding: 1.5rem;
-        }
-        .progress-container {
-            margin-bottom: 1.5rem;
-            background: #0f172a;
-            border-radius: 999px;
-            padding: 0.25rem;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        .progress-bar {
-            height: 12px;
-            width: 0%;
-            background: linear-gradient(90deg, var(--accent), var(--success));
-            border-radius: 999px;
-            transition: width 0.4s ease;
-        }
-        .progress-stats {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.85rem;
-            margin-bottom: 0.5rem;
-            color: var(--text-muted);
-        }
+        .tracker-box { background: rgba(15, 23, 42, 0.4); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 12px; padding: 1.5rem; }
+        .progress-container { margin-bottom: 1.5rem; background: #0f172a; border-radius: 999px; padding: 0.25rem; border: 1px solid rgba(255, 255, 255, 0.05); }
+        .progress-bar { height: 12px; width: 0%; background: linear-gradient(90deg, var(--accent), var(--success)); border-radius: 999px; transition: width 0.4s ease; }
+        .progress-stats { display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.5rem; color: var(--text-muted); }
         #percentage { color: var(--accent); font-weight: bold; }
-        
-        .audit-list {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-        }
-        .audit-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.75rem;
-            background: rgba(30, 41, 59, 0.5);
-            padding: 0.75rem 1rem;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.02);
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-        .audit-item:hover {
-            background: rgba(30, 41, 59, 0.8);
-            border-color: rgba(255, 255, 255, 0.1);
-        }
-        .audit-item input[type="checkbox"] {
-            margin-top: 0.25rem;
-            width: 16px;
-            height: 16px;
-            cursor: pointer;
-            accent-color: var(--accent);
-        }
-        .audit-text { flex-grow: 1; font-size: 0.88rem; color: var(--text-main); }
-        .audit-text small { display: block; color: var(--text-muted); font-size: 0.75rem; margin-top: 0.15rem; }
-        
-        /* Badges */
-        .badge {
-            font-size: 0.7rem;
-            padding: 0.15rem 0.4rem;
-            border-radius: 4px;
-            font-weight: 600;
-            text-transform: uppercase;
-        }
-        .badge-high { background: rgba(239, 68, 68, 0.15); color: var(--danger); border: 1px solid rgba(239, 68, 68, 0.2); }
-        .badge-med { background: rgba(245, 158, 11, 0.15); color: var(--warning); border: 1px solid rgba(245, 158, 11, 0.2); }
-
-        /* Social/Buttons */
-        .social-buttons { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; }
-        .btn { display: inline-flex; align-items: center; gap: 0.5rem; background-color: #334155; color: var(--text-main); text-decoration: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-size: 0.9rem; transition: all 0.2s ease; border: 1px solid rgba(255, 255, 255, 0.05); }
-        .btn:hover { background-color: var(--accent); color: #0f172a; transform: translateY(-2px); }
-
+        .audit-list { display: flex; flex-direction: column; gap: 0.75rem; }
+        .audit-item { display: flex; align-items: flex-start; gap: 0.75rem; background: rgba(30, 41, 59, 0.5); padding: 0.75rem 1rem; border-radius: 8px; cursor: pointer; }
+        .audit-item input { margin-top: 0.25rem; width: 16px; height: 16px; }
+        .audit-text { flex-grow: 1; font-size: 0.88rem; }
+        .audit-text small { display: block; color: var(--text-muted); font-size: 0.75rem; }
+        .badge { font-size: 0.7rem; padding: 0.15rem 0.4rem; border-radius: 4px; font-weight: 600; }
+        .badge-high { background: rgba(239, 68, 68, 0.15); color: var(--danger); }
+        .badge-med { background: rgba(245, 158, 11, 0.15); color: var(--warning); }
+        .social-buttons { display: flex; gap: 1rem; flex-wrap: wrap; }
+        .btn { display: inline-flex; align-items: center; gap: 0.5rem; background-color: #334155; color: var(--text-main); text-decoration: none; padding: 0.6rem 1.2rem; border-radius: 8px; font-size: 0.9rem; transition: all 0.2s ease; }
         .terminal-block { background-color: #090d16; border-radius: 8px; padding: 1rem; font-family: monospace; font-size: 0.8rem; border: 1px solid rgba(255, 255, 255, 0.05); margin-top: 2rem; }
-        @media (max-width: 500px) { .social-buttons { flex-direction: column; } h1 { font-size: 1.75rem; } }
+        @media (max-width: 500px) { .social-buttons { flex-direction: column; } }
     </style>
 </head>
 <body>
@@ -159,7 +75,6 @@
             <p class="bio">I'm a dedicated student specializing in <strong>Artificial Intelligence</strong> and <strong>Cybersecurity</strong>. I focus on leveraging AI for advanced threat detection, secure workflows, and smart digital strategies.</p>
         </header>
 
-        <!-- SECTION 1: CORE SKILLS -->
         <section>
             <h3>Core Technical Skills</h3>
             <div class="skills-grid">
@@ -170,7 +85,6 @@
             </div>
         </section>
 
-        <!-- NEW SECTION 2: LIVE AUDIT TRACKER DASHBOARD -->
         <section>
             <h3>Live Case Study: Strategy Audit Tracker</h3>
             <div class="tracker-box">
@@ -181,9 +95,7 @@
                 <div class="progress-container">
                     <div class="progress-bar" id="bar"></div>
                 </div>
-                
                 <div class="audit-list">
-                    <!-- Item 1 -->
                     <label class="audit-item">
                         <input type="checkbox" class="audit-check" onchange="calculateProgress()">
                         <div class="audit-text">
@@ -192,8 +104,6 @@
                         </div>
                         <span class="badge badge-high">High</span>
                     </label>
-                    
-                    <!-- Item 2 -->
                     <label class="audit-item">
                         <input type="checkbox" class="audit-check" onchange="calculateProgress()">
                         <div class="audit-text">
@@ -202,8 +112,6 @@
                         </div>
                         <span class="badge badge-high">High</span>
                     </label>
-
-                    <!-- Item 3 -->
                     <label class="audit-item">
                         <input type="checkbox" class="audit-check" onchange="calculateProgress()">
                         <div class="audit-text">
@@ -212,10 +120,68 @@
                         </div>
                         <span class="badge badge-med">Medium</span>
                     </label>
-
-                    <!-- Item 4 -->
                     <label class="audit-item">
                         <input type="checkbox" class="audit-check" onchange="calculateProgress()">
                         <div class="audit-text">
                             <strong>Setup Local Optimization</strong>
                             <small>Schedule shares into hyper-local twin cities digital groups.</small>
+                        </div>
+                        <span class="badge badge-med">Medium</span>
+                    </label>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h3>Professional Certifications</h3>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <span class="skill-icon">🎓</span>
+                    <span class="skill-name">DigiSkills.pk</span>
+                </div>
+                <div class="skill-card" style="opacity: 0.85; border-style: dashed;">
+                    <span class="skill-icon">🔒</span>
+                    <span class="skill-name">PACI Punjab</span>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h3>Connect With Me</h3>
+            <div class="social-buttons">
+                <a href="mailto:janjuaconsultants@gmail.com" class="btn">✉️ Email Me</a>
+                <a href="https://github.com" target="_blank" class="btn">🛠️ GitHub</a>
+            </div>
+        </section>
+
+        <footer>
+            <div class="terminal-block">
+                <div><span style="color:var(--accent)">arshad:~$</span> git log --oneline</div>
+                <div style="color:#34d399">● v1.8.1 - Clean dashboard execution patch applied</div>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        function updateGreeting() {
+            const greetingElement = document.getElementById('greeting-text');
+            const hour = new Date().getHours();
+            let msg = hour < 12 ? "☀️ Good Morning" : hour < 18 ? "🌤️ Good Afternoon" : "🌙 Good Evening";
+            greetingElement.textContent = msg;
+        }
+        
+        function calculateProgress() {
+            const checkboxes = document.querySelectorAll('.audit-check');
+            const total = checkboxes.length;
+            let checkedCount = 0;
+            checkboxes.forEach(box => { if (box.checked) checkedCount++; });
+            const percentage = Math.round((checkedCount / total) * 100);
+            document.getElementById('bar').style.width = percentage + '%';
+            document.getElementById('percentage').textContent = percentage + '% Completed';
+        }
+        
+        updateGreeting();
+        calculateProgress();
+    </script>
+</body>
+</html>
